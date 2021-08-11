@@ -1,0 +1,43 @@
+{% extends "plans/base.html" %}
+
+
+{% block title %}
+    Plans
+{% endblock title %}
+    
+
+{% block body %}
+    
+<div class="container mt-5">
+    <div class="row">
+        
+        {% if plans %}
+            {% for plan in plans %}
+                <div class="col-md-4 col-sm-6 mb-5 mx-sm-0 gy-2 mx-5 px-sm-3 px-5 d-flex align-items-stretch">
+                    <div class="card" >
+                        <img src="../../static/images/day-care1.jpg" class="card-img-top" alt="Day Care">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ plan.title }}</h5>
+                            <p class="card-text">Day Care Plan</p>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Trial Period: {{ plan.trial }}</li>
+                            <li class="list-group-item">Duration: <?php echo $row['duration']  ?></li>
+                            <li class="list-group-item">Time Duration: {{ plan.time_duration }}</li>
+                            <li class="list-group-item">Price: {{ plan.price }}$</li>
+                        </ul>
+                        <div class="card-body text-center">
+                            <a class="btn btn-outline-primary" href="./user/Buy-plan.php?id=<?php echo $row['id'] ?>" class="card-link">Buy</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+            
+        {% else %}
+            <p class="text-center alert alert-danger w-100">No Plans</p>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock body %}
+    

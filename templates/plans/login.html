@@ -1,0 +1,49 @@
+{% extends 'plans/base.html' %}
+
+
+{% block title %}
+    Login
+{% endblock title %}
+
+
+{% block body %}
+<h1 class="text-center mb-md-5 mb-sm-4 mt-5 display1 text-primary">Login</h1>
+
+{% if messages %}
+    {% for message in messages %}
+        <p 
+        {% if message.tags == 'error' %}
+            class="text-center w-100 alert alert-danger mt-4 mb-4" 
+        {% else %}
+            class="text-center w-100 alert alert-{{message.tags}} mt-4 mb-4"
+        {% endif %}
+         role ="alert"> {{ message }}</p>
+    {% endfor %}     
+{% endif %}
+    
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6 m-lg-auto col-md-8 m-md-auto col-sm-10 m-sm-auto">
+            <form method="post">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label class="form-label">Email</label>
+                    <input type="email" class="form-control" name="email" placeholder="Email">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Password</label>
+                    <input type="password" class="form-control" name="password" placeholder="Password">
+                </div>
+                Don't have an account? <a href="/register">Sign Up</a>
+                <div class="row">
+                    <div class="col-sm-2 col-3 ml-auto mr-auto mb-4 mt-3">
+                        <button class="btn btn-primary" type="submit" name="save-button" id="save-button">Login</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock body %}
+    
+    

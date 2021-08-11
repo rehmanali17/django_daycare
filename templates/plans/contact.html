@@ -1,0 +1,41 @@
+{% extends 'plans/base.html' %}
+
+
+{% block title %}
+    Contact Us
+{% endblock title %}
+    
+
+{% block body %}
+<div class="container mt-4">
+    <h1 class="text-center text-primary mb-4">Contact Us</h1>
+    
+    {% if messages %}
+        
+        {% for message in messages %}
+            <p class="text-center w-100 alert alert-{{message.tags}} mt-4 mb-4">{{message}}</p>
+        {% endfor %}
+            
+    {% endif %}
+        
+    <form class="row g-3" action="/contact" method="post">
+        {% csrf_token %}
+      <div class="col-md-6 mb-4">
+        <input type="email" class="form-control" name="email" placeholder="Email" required>
+      </div>
+      <div class="col-md-6 mb-4">
+        <input type="text" class="form-control" name="phone" placeholder="Phone" required>
+      </div>
+      <div class="col-12 mb-4">
+        <input type="text" class="form-control" name="address" placeholder="1234 Main St" required>
+      </div>
+      <div class="col-12 mb-4">
+        <textarea rows="5" type="text" class="form-control" name="message" required>Message</textarea>
+      </div>
+      <div class="text-center mx-auto mb-sm-0 mb-3 mt-5">
+        <button type="submit" name="save-button" class="btn btn-primary">Send</button>
+      </div>
+    </form>
+    </div>
+{% endblock body %}
+    
