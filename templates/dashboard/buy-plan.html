@@ -1,0 +1,54 @@
+{% extends 'dashboard/base.html' %}
+
+
+{% block title %}
+    Buy Plan
+{% endblock title %}
+    
+
+{% block body %}
+    <h1 class="text-center mb-md-5 mb-sm-4 mt-5 display1 text-primary">Buy Plan</h1>
+    <div class="container">
+        <form method="post" action="{% url 'planBought' %}">
+            {% csrf_token %}
+            <div class="row">
+                <input type="hidden" name="id" value="{{id}}">
+                <div class="col-md-6 col-sm-6 mb-5 mx-sm-auto  mx-5 d-flex align-items-stretch">
+                    <div class="card">
+                        <img src="../../static/images/day-care1.jpg" class="card-img-top" alt="Day Care">
+                        <div class="card-body">
+                            <h5 class="card-title">{{plan.title}}</h5>
+                            <p class="card-text">Day Care Plan</p>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Trial Period: {{plan.trial}}</li>
+                            <li class="list-group-item">Duration: {{plan.duration}}</li>
+                            <li class="list-group-item">Time Duration: {{plan.time_duration}}</li>
+                            <li class="list-group-item">Price: {{plan.price}}$</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6 mx-sm-auto">
+                    <label class="col-sm-4 col-form-label">Pick a Time Slot</label>
+                    <div class="col-sm-12 mb-4">
+                        <input list="val1" name="time" class="form-control">
+                        <datalist id="val1">
+                            <option value="09:00 AM">
+                            <option value="12:00 PM">
+                            <option value="14:30 PM">
+                            <option value="18:30 PM">
+                        </datalist>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="text-center col-sm-4 mx-auto mb-5">
+                    <button type="submit" class="btn btn-outline-primary" name="buy-button" id="buy-button">Buy</button>
+                </div>
+            </div>
+        </form>
+    </div>
+{% endblock body %}
+    

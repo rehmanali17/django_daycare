@@ -1,0 +1,37 @@
+{% extends 'dashboard/base.html' %}
+
+{% block title %}
+    {{ plan.title }}
+{% endblock title %}
+
+
+{% block body %}
+    <h1 class="text-center mb-md-5 mb-sm-4 mt-5 display1 text-primary">Plan</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-sm-6 mb-5 mx-sm-auto  mx-5 d-flex align-items-stretch">
+                <div class="card">
+                    <img src="../../static/images/day-care1.jpg" class="card-img-top" alt="Day Care">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ plan.title }}</h5>
+                        <p class="card-text">Day Care Plan</p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Trial Period: {{plan.trial}}</li>
+                        <li class="list-group-item">Duration: {{plan.duration}}</li>
+                        <li class="list-group-item">Time Duration: {{plan.time_duration}}</li>
+                        <li class="list-group-item">Price: {{plan.price}}$</li>
+                        <li class="list-group-item">Time Slot: {{time}}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col text-center mb-4">
+        <a href="{% url 'plans' %}" ><- Back to Home</a>
+            
+            </div>        
+        </div>
+    </div>
+{% endblock body %}
+    
